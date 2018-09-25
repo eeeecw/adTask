@@ -1,0 +1,51 @@
+{
+	"manifest_version": 2,
+	"name": "广告任务网",
+	"version": "1.0.1",
+	"description": "测试广告任务网",
+	"icons":
+	{
+		"16": "img/icon.png",
+		"48": "img/icon.png",
+		"128": "img/icon.png"
+	},
+	"background":
+	{
+		"page": "background.html"
+	},
+	"browser_action": 
+	{
+		"default_icon": "img/icon.png",
+		"default_title": "这是一个示例Chrome插件",
+		"default_popup": "popup.html"
+	},
+	"content_scripts": 
+	[
+		{
+			"matches": ["http://*.5iads.cn/*"],
+			"js": ["js/jquery-1.8.3.js","js/axios.js", "js/5iads.js"],
+			"run_at": "document_end"
+		}
+  ],
+	"permissions":
+	[
+		"contextMenus",
+		"tabs",
+		"notifications",
+		"webRequest",
+		"webRequestBlocking",
+		"storage",
+		"http://*/*",
+		"https://*/*"
+	],
+	"web_accessible_resources": ["js/5iads-inject.js", "js/inject2.js"],
+	"homepage_url": "https://www.baidu.com",
+	"options_page": "options.html",
+ 	"options_ui":
+	{
+		"page": "options.html",
+ 		"chrome_style": true
+	},
+	"omnibox": { "keyword" : "go" },
+	"default_locale": "zh_CN"
+}
